@@ -191,10 +191,18 @@ static apr_status_t ta_out_filter3(ap_filter_t *f,apr_bucket_brigade *bb){
         
 	if (!ap_is_HTTP_CODE_ALLOW(r->status)) {  ap_remove_output_filter(f); return ap_pass_brigade(f->next, bb) ; }
 	if (r->method_number != M_GET){  ap_remove_output_filter(f); return ap_pass_brigade(f->next, bb) ; }
-
-	 s_ctx* sctx = (s_ctx*) f->ctx; 
-	
-       
+	if(r->handler == NULL) {
+	  ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "sitestory: r->handler is NULL"); ap_remove_output_filter(f); return ap_pass_brigade(f->next, bb);
+	} else {
+	  if(!strcmp(r->handler, "horcruxes")){
+	    ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "sitestory: r->handler is horcruxes"); ap_remove_output_filter(f); return ap_pass_brigade(f->next, bb);    
+ 	  } else {
+		ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "sitestory: r->handler is therefore: %s", r->handler);
+	  }
+	}
+      
+	s_ctx* sctx = (s_ctx*) f->ctx;
+ 
 	if (sctx  == NULL) {
 		 ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "mod_tafilter3: in the init section   filter function") ;
 	      

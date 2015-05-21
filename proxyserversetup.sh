@@ -8,7 +8,7 @@ sudo git clone https://github.com/peeceeprashant/UWS.git
 #sudo git clone https://github.com/mementoweb/SiteStory.git
 cd UWS
 sudo cp mod_sitestory.c /etc/httpd/
-sudo cp mod_testsite.c /etc/httpd/
+sudo cp mod_testsite_patten4.c /etc/httpd/mod_testsite.c
 #Change Sitestory Archive IP Address
 sudo sed -i "s/127.0.0.1/$SITESTORY_ARCHIVE_IP/g" /etc/httpd/mod_testsite.c
 cd /etc/httpd/

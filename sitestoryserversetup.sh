@@ -4,7 +4,7 @@ sudo yum -y install httpd httpd-devel gcc git curl-devel apr-devel openssl-devel
 sudo mkdir ~/development
 cd development
 sudo git clone https://github.com/peeceeprashant/UWS.git
-sudo git clone https://github.com/mementoweb/SiteStory.git
+sudo git clone https://github.com/peeceeprashant/SiteStory.git
 cd UWS
 sudo cp apache-tomcat-6.0.41.tar.gz ../
 cd ..
